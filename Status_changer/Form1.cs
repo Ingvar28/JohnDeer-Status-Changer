@@ -118,6 +118,7 @@ namespace Status_changer
 
                         foreach (DataRow row in consData.Rows)
                         {
+                            //ДОПИСАТЬ ЗАБОР ПЕРЕМЕННЫХ ИЗ БАЗЫ1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                             var qty = "1";
                             //int id = Convert.ToInt32(row["id"].ToString());
                             var con = row["Nakladnaya TNT"].ToString();
@@ -130,6 +131,7 @@ namespace Status_changer
                             //if (comment.Trim() == "") comment = "...";
                             var delvz = "B";
 
+                            //Начало подключения к MF
                             ForAwait(15, 2, "Consignment Status Entry");
                             Thread.Sleep(500);
                             host.Send(status);//Вводим статус
@@ -148,7 +150,204 @@ namespace Status_changer
                             ForAwaitCol(70);
 
                             Thread.Sleep(500);
-                            host.Send(eventdepot); //поменял
+                            if (eventdepot == "Москва")
+                                {
+                                    eventdepot = "MS1";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if ( eventdepot== "Владимир"
+                            #region VL5_depot    
+                                || eventdepot == "Ковров-1"
+                                || eventdepot == "Вязники"
+                                || eventdepot == "Гороховец"
+                                || eventdepot == "Дзержинск"                                                                               
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "VL5";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Н.Новгород Моск."// Уточнение станции!!!!
+                            #region GOJ_depot
+                                || eventdepot == "Сухобезводно"
+                                #endregion
+                                    )
+                                {
+                                    eventdepot = "GOJ";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Киров"
+                            #region KI4_depot    
+                                || eventdepot == "Глазов"
+                                || eventdepot == "Балезино"
+                                || eventdepot == "Верещагино"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "KI4";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Пермь"
+                            #region RT4_depot    
+                                || eventdepot == "Ферма"
+                                || eventdepot == "Кунгур"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "RT4";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Екатеринбург-П"// Уточнение станции!!!!
+                            #region SVX_depot    
+                                || eventdepot == "Аксариха"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "SVX";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Тюмень"
+                            #region RT6_depot    
+                                || eventdepot == "Заводоуковская"
+                                || eventdepot == "Омутинская"
+                                || eventdepot == "Ишим"
+                                || eventdepot == "Называевская"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "RT6";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Омск-пасс")// Уточнение станции!!!!
+                            {
+                                    eventdepot = "OM4";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Барабинск")
+                                {
+                                    eventdepot = "BB8";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Новосибирск-гл."// Уточнение станции!!!!
+                            #region OVB_depot    
+                                || eventdepot == "Тайга"
+                                || eventdepot == "Мариинск"
+                                || eventdepot == "Боготол"
+                                || eventdepot == "Ачинск 1"
+                                || eventdepot == "Козулька"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "OVB";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Красноярск-пасс."// Уточнение станции!!!!
+                            #region KJ4_depot    
+                                || eventdepot == "Базаиха"
+                                || eventdepot == "Уяр"
+                                || eventdepot == "Заозерная"
+                                || eventdepot == "Канск-Енисейский"
+                                || eventdepot == "Иланская"
+                                || eventdepot == "Решоты"
+                                || eventdepot == "Тайшет"
+                                || eventdepot == "Нижнеудинск"
+                                || eventdepot == "Тулун"
+                                || eventdepot == "Зима"
+                                || eventdepot == "Черемхово"
+                                || eventdepot == "Усолье-Сибирское"
+                                || eventdepot == "Ангарск"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "KJ4";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Иркутск-пасс."// Уточнение станции!!!!
+                            #region IK3_depot    
+                                || eventdepot == "Слюдянка"
+                                || eventdepot == "Мысовая"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "IK3";
+                                    host.Send(eventdepot);
+                            }
+
+                            else if (eventdepot == "Улан-Удэ"
+                            #region UU3_depot    
+                                || eventdepot == "Петр.Завод Чет"// Уточнение станции!!!!
+                                || eventdepot == "Хилок"
+                                || eventdepot == "Могзон"
+                                || eventdepot == "Кадала"
+                            #endregion
+                                    )
+                            {
+                                eventdepot = "UU3";
+                                host.Send(eventdepot);
+                            }
+
+                            else if (eventdepot == "Чита 2"// Уточнение станции!!!!
+                            #region CT6_depot    
+                                || eventdepot == "Карымская"
+                                || eventdepot == "Шилка пасс."// Уточнение станции!!!!
+                                || eventdepot == "Приисковая"
+                                || eventdepot == "Куэнга"
+                                || eventdepot == "Чернышевск Заб."// Уточнение станции!!!!
+                                || eventdepot == "Зилово"
+                                || eventdepot == "Ксеньевская"
+                                || eventdepot == "Могоча"
+                                || eventdepot == "Ерофей Павлович"
+                                || eventdepot == "Уруша"
+                                || eventdepot == "Сковородино"
+                                || eventdepot == "Магдагачи"
+                                || eventdepot == "Тыгда"
+                                || eventdepot == "Шимановская"
+                                || eventdepot == "Свободный"
+                                || eventdepot == "Белогорск"
+                                || eventdepot == "Завитая"
+                                || eventdepot == "Бурея"
+                                || eventdepot == "Облучье"
+                                || eventdepot == "Биробиджан"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "CT6";
+                                    host.Send(eventdepot);
+                                }
+
+                            else if (eventdepot == "Хабаровск 1"// Уточнение станции!!!!
+                            #region KH6_depot    
+                                || eventdepot == "Вяземская"
+                                || eventdepot == "Бикин"
+                                || eventdepot == "Лучегорск"
+                                || eventdepot == "Дальнереченск 1"
+                                || eventdepot == "Ружино"
+                                || eventdepot == "Спасск-Дальний"
+                                || eventdepot == "Мучная"
+                                || eventdepot == "Уссурийск"
+                            #endregion
+                                    )
+                                {
+                                    eventdepot = "KH6";
+                                    host.Send(eventdepot);
+                                }
+                            else if (eventdepot == "Владивосток")
+                            {
+                                eventdepot = "VK3";
+                                host.Send(eventdepot);
+                            }
+
                             Thread.Sleep(500);
                             logger.Debug(eventdepot, this.Text); //LOG
                             host.Send("<TAB>");
