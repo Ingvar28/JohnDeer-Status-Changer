@@ -84,5 +84,16 @@ namespace Status_changer.Properties {
                 this["EventDepot"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CZPRGS5.cz.tnt.com\\PRODUCTION;Initial Catalog=BPA_RU;Persist Security" +
+            " Info=True;User ID=bpa_ru")]
+        public string BPA_RUConnectionString {
+            get {
+                return ((string)(this["BPA_RUConnectionString"]));
+            }
+        }
     }
 }
