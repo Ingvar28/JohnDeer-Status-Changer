@@ -39,7 +39,7 @@ namespace Status_changer
 
                 // Открытые подключение к базе данных
                 string ConnectionString = "server=10.206.64.75;uid=bpa_ru;" +
-                    "pwd=bpAut0mat10n_RUbpAut0mat10n_RU; database=BPA_RU";
+                    "pwd=bpAut0mat10n_RU; database=BPA_RU";
                 Сon = new SqlConnection(ConnectionString);
                 Сon.Open();
 
@@ -47,9 +47,9 @@ namespace Status_changer
                 DataSet dataSet1 = new DataSet();
 
                 // Объект DataAdapter является посредником при взаимодействии базы данных и объекта DataSet
-                string select = String.Format("SELECT COUNT(*) FROM dbo.BPA_RU WHERE InMainframe ='0'");
-                da = new SqlDataAdapter(select, ConnectionString);
-
+                string select = String.Format("SELECT COUNT(*) FROM dbo.JohnDeere ");
+                //string select = String.Format("SELECT COUNT(*) FROM dbo.JohnDeere WHERE InMainframe ='0'");
+                
                 da = new SqlDataAdapter(select, ConnectionString);
                 dt = new DataTable();
                 da.Fill(dt);
@@ -120,15 +120,23 @@ namespace Status_changer
                         {
                             //ДОПИСАТЬ ЗАБОР ПЕРЕМЕННЫХ ИЗ БАЗЫ1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                             var qty = "1";
+
                             //int id = Convert.ToInt32(row["id"].ToString());
+
                             var con = row["Nakladnaya TNT"].ToString();
+
                             DateTime dateFromBase = row.Field<DateTime>("Date");
                             var date = dateFromBase.ToString("ddMMMyy", CultureInfo.GetCultureInfo("en-us"));
                             var time = dateFromBase.ToString("HHmm");
+
                             var status = row["Status"].ToString();
+
                             //var comment = row["Commentary"].ToString();
+
                             var eventdepot = row["EventDepot"].ToString();  //дописал
+
                             //if (comment.Trim() == "") comment = "...";
+
                             var delvz = "B";
 
                             //Начало подключения к MF
@@ -359,8 +367,8 @@ namespace Status_changer
                             host.Send("<TAB>");
                             ForAwaitCol(77);
 
-                            ForAwaitCol(77);//Rems + Если статус OF, то делаем и вводим коммент = статусу OF
-                            if (status == "OF")
+                            ForAwaitCol(77);//Rems + Если статус "Груз в пути", то делаем и вводим коммент = статусу OF
+                            if (status == "Груз в пути")
                             {
                                 host.Send("<F4>");
                                 ForAwait(5, 5, "Seq Remarks");
@@ -421,8 +429,8 @@ namespace Status_changer
                             ForAwaitCol(64);// Rev date (повторный вывод) - пропускаем
                             host.Send("<TAB>");
 
-                            ForAwaitCol(17); // Signatory Если статус OK = OK, если OF = ""
-                            if (status == "OK")
+                            ForAwaitCol(17); // Signatory Если статус "Груз выдан" = OK, если OF = ""
+                            if (status == "Груз выдан")
                             {
                                 host.Send(status);
                             }
