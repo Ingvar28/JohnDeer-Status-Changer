@@ -38,9 +38,16 @@ namespace Status_changer
                 SqlDataAdapter da = null;
 
                 // Открытые подключение к базе данных
-                string ConnectionString = "server=10.206.64.75;uid=bpa_ru;" +
-                    "pwd=bpAut0mat10n_RU; database=BPA_RU";
-                Сon = new SqlConnection(ConnectionString);
+                //string ConnectionString = "server=10.206.64.75;uid=bpa_ru;" +"pwd=bpAut0mat10n_RU; database=BPA_RU";
+
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = @"CZPRGS5.cz.tnt.com\PRODUCTION";
+                builder.UserID = "bpa_ru";
+                builder.PersistSecurityInfo = true;
+                builder.Password = "bpAut0mat10n_RU";
+                builder.InitialCatalog = "BPA_RU";
+
+                Сon = new SqlConnection(builder.ConnectionString);
                 Сon.Open();
 
                 // DataSet сохраняет данные в памяти с помощью таблиц данных DataTable
@@ -50,7 +57,7 @@ namespace Status_changer
                 string select = String.Format("SELECT COUNT(*) FROM dbo.JohnDeere ");
                 //string select = String.Format("SELECT COUNT(*) FROM dbo.JohnDeere WHERE InMainframe ='0'");
                 
-                da = new SqlDataAdapter(select, ConnectionString);
+                da = new SqlDataAdapter(select, builder.ConnectionString);
                 dt = new DataTable();
                 da.Fill(dt);
                 string R = dt.Rows[0].ItemArray[0].ToString();
@@ -71,7 +78,7 @@ namespace Status_changer
 
                         var login = Properties.Settings.Default.loginMF;
                         var password = Properties.Settings.Default.pwdMF;
-                        var consData = DBContext.GetConsStatus();
+                        var consData = DBContext.GetConsStatus();                        
                         teemApp = new teemtalk.Application();
 
                         teemApp.CurrentSession.Name = "Mainframe";

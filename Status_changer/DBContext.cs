@@ -23,7 +23,7 @@ namespace Status_changer
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.Connection = con;
-                        cmd.CommandText = "select id, Consignment, Date, Code, Commentary, EventDepot from InvoicesStatuses WHERE InMainframe = 0;";
+                        cmd.CommandText = "Nakladnaya TNT, Status, Data, Tekuschee mestopolozhenie from JohnDeere;";
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -42,32 +42,32 @@ namespace Status_changer
             return result;
         }
 
-        static public void ChangeRecordStatus(int id)
-        {
-            try
-            {
-                using (SqlConnection con = new SqlConnection(Properties.Settings.Default.conString))
-                {
-                    con.Open();
+        //static public void ChangeRecordStatus(int id)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection con = new SqlConnection(Properties.Settings.Default.conString))
+        //        {
+        //            con.Open();
 
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        cmd.Connection = con;
-                        cmd.CommandText = "Update InvoicesStatuses Set InMainframe = 1 Where id = @id";
+        //            using (SqlCommand cmd = new SqlCommand())
+        //            {
+        //                cmd.Connection = con;
+        //                cmd.CommandText = "Update InvoicesStatuses Set InMainframe = 1 Where id = @id";
 
-                        cmd.Parameters.Clear();
+        //                cmd.Parameters.Clear();
 
-                        cmd.Parameters.Add("@id", SqlDbType.Int);
-                        cmd.Parameters["@id"].Value = id;
+        //                cmd.Parameters.Add("@id", SqlDbType.Int);
+        //                cmd.Parameters["@id"].Value = id;
 
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-        }
+        //                cmd.ExecuteNonQuery();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //}
     }
 
 }
