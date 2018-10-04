@@ -142,8 +142,24 @@ namespace Status_changer
                             //Начало подключения к MF
                             ForAwait(15, 2, "Consignment Status Entry");
                             Thread.Sleep(500);
-                            host.Send(status);//Вводим статус
-                            logger.Debug(status, this.Text); //LOG
+
+                            if (status == "Груз выдан")
+                            {
+                                status = "OK"; 
+                                host.Send(status);//Вводим статус
+                                logger.Debug(status, this.Text); //LOG
+                            }
+                            else if (status == "Груз в пути")
+                            {
+                                status = "OF";
+                                host.Send(status);//Вводим статус
+                                logger.Debug(status, this.Text); //LOG
+                            }
+                            else
+                            {
+                                continue; //переход к следующей итерации
+                            }
+                            
                             Thread.Sleep(500); //костыль
                             if (disp.CursorCol != 28 && disp.CursorCol != 10) host.Send("<TAB>");
                             ForAwaitCol(28);
@@ -162,6 +178,7 @@ namespace Status_changer
                                 {
                                     eventdepot = "MS1";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if ( eventdepot== "Владимир"
@@ -175,6 +192,7 @@ namespace Status_changer
                                 {
                                     eventdepot = "VL5";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Н.Новгород Моск."// Уточнение станции!!!!
@@ -185,6 +203,7 @@ namespace Status_changer
                                 {
                                     eventdepot = "GOJ";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Киров"
@@ -197,6 +216,7 @@ namespace Status_changer
                                 {
                                     eventdepot = "KI4";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Пермь"
@@ -208,6 +228,7 @@ namespace Status_changer
                                 {
                                     eventdepot = "RT4";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Екатеринбург-П"// Уточнение станции!!!!
@@ -218,6 +239,7 @@ namespace Status_changer
                                 {
                                     eventdepot = "SVX";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Тюмень"
@@ -231,18 +253,23 @@ namespace Status_changer
                                 {
                                     eventdepot = "RT6";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Омск-пасс")// Уточнение станции!!!!
                             {
                                     eventdepot = "OM4";
                                     host.Send(eventdepot);
+
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Барабинск")
                                 {
                                     eventdepot = "BB8";
                                     host.Send(eventdepot);
+
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Новосибирск-гл."// Уточнение станции!!!!
@@ -279,6 +306,7 @@ namespace Status_changer
                                 {
                                     eventdepot = "KJ4";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Иркутск-пасс."// Уточнение станции!!!!
@@ -290,7 +318,8 @@ namespace Status_changer
                                 {
                                     eventdepot = "IK3";
                                     host.Send(eventdepot);
-                            }
+                                    logger.Debug(eventdepot, this.Text); //LOG
+                                }
 
                             else if (eventdepot == "Улан-Удэ"
                             #region UU3_depot    
@@ -300,10 +329,11 @@ namespace Status_changer
                                 || eventdepot == "Кадала"
                             #endregion
                                     )
-                            {
-                                eventdepot = "UU3";
-                                host.Send(eventdepot);
-                            }
+                                {
+                                    eventdepot = "UU3";
+                                    host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
+                                }
 
                             else if (eventdepot == "Чита 2"// Уточнение станции!!!!
                             #region CT6_depot    
@@ -332,6 +362,7 @@ namespace Status_changer
                                 {
                                     eventdepot = "CT6";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
                             else if (eventdepot == "Хабаровск 1"// Уточнение станции!!!!
@@ -349,15 +380,17 @@ namespace Status_changer
                                 {
                                     eventdepot = "KH6";
                                     host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
                                 }
-                            else if (eventdepot == "Владивосток")
-                            {
-                                eventdepot = "VK3";
-                                host.Send(eventdepot);
-                            }
 
-                            Thread.Sleep(500);
-                            logger.Debug(eventdepot, this.Text); //LOG
+                            else if (eventdepot == "Владивосток")
+                                {
+                                    eventdepot = "VK3";
+                                    host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
+                                }
+
+                            Thread.Sleep(500);                            
                             host.Send("<TAB>");
                             ForAwaitCol(13);
                             host.Send("<TAB>");
@@ -367,11 +400,12 @@ namespace Status_changer
                             host.Send("<TAB>");
                             ForAwaitCol(77);
 
-                            ForAwaitCol(77);//Rems + Если статус "Груз в пути", то делаем и вводим коммент = статусу OF
+                            ForAwaitCol(77);//Rems + Если статус "Груз в пути", то вводим коммент = статусу OF
                             if (status == "Груз в пути")
                             {
                                 host.Send("<F4>");
                                 ForAwait(5, 5, "Seq Remarks");
+                                status = "OF";
                                 host.Send(status);
                                 Thread.Sleep(500);
                                 host.Send("<ENTER>");
