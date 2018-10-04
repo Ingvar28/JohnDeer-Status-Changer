@@ -25,7 +25,7 @@ namespace Status_changer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("B304AFX")]
+        [global::System.Configuration.DefaultSettingValueAttribute("c346rsr")]
         public string loginMF {
             get {
                 return ((string)(this["loginMF"]));
@@ -37,7 +37,7 @@ namespace Status_changer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("APR2018")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Octm10")]
         public string pwdMF {
             get {
                 return ((string)(this["pwdMF"]));
@@ -89,7 +89,7 @@ namespace Status_changer.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CZPRGS5.cz.tnt.com\\PRODUCTION;Initial Catalog=BPA_RU;Persist Security" +
-            " Info=True;User ID=bpa_ru")]
+            " Info=True;User ID=bpa_ru;Password=bpAut0mat10n_RU;")]
         public string BPA_RUConnectionString {
             get {
                 return ((string)(this["BPA_RUConnectionString"]));

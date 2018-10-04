@@ -16,14 +16,14 @@ namespace Status_changer
             DataTable result = new DataTable();
             try
             {
-                using (SqlConnection con = new SqlConnection(Properties.Settings.Default.conString))
+                using (SqlConnection con = new SqlConnection(Properties.Settings.Default.BPA_RUConnectionString))
                 {
                     con.Open();
 
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.Connection = con;
-                        cmd.CommandText = "Nakladnaya TNT, Status, Data, Tekuschee mestopolozhenie from JohnDeere;";
+                        cmd.CommandText = "Select 'Nakladnaya TNT', Status, Data, 'Tekuschee mestopolozhenie' from JohnDeere WHERE Status IS NOT NULL;";
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {

@@ -78,7 +78,7 @@ namespace Status_changer
 
                         var login = Properties.Settings.Default.loginMF;
                         var password = Properties.Settings.Default.pwdMF;
-                        var consData = DBContext.GetConsStatus();                        
+                        var consData = DBContext.GetConsStatus();    //CONSDATA!!!!                    
                         teemApp = new teemtalk.Application();
 
                         teemApp.CurrentSession.Name = "Mainframe";

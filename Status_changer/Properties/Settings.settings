@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="loginMF" Type="System.String" Scope="User">
-      <Value Profile="(Default)">B304AFX</Value>
+      <Value Profile="(Default)">c346rsr</Value>
     </Setting>
     <Setting Name="pwdMF" Type="System.String" Scope="User">
-      <Value Profile="(Default)">APR2018</Value>
+      <Value Profile="(Default)">Octm10</Value>
     </Setting>
     <Setting Name="conString" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=RUMOWS12;Initial Catalog=InvoicesStatuses;MultipleActiveResultSets=true;user=mf;password=mf;</Value>
@@ -20,10 +20,10 @@
     <Setting Name="BPA_RUConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=CZPRGS5.cz.tnt.com\PRODUCTION;Initial Catalog=BPA_RU;Persist Security Info=True;User ID=bpa_ru&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=CZPRGS5.cz.tnt.com\PRODUCTION;Initial Catalog=BPA_RU;Persist Security Info=True;User ID=bpa_ru;Password=bpAut0mat10n_RU;&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=CZPRGS5.cz.tnt.com\PRODUCTION;Initial Catalog=BPA_RU;Persist Security Info=True;User ID=bpa_ru</Value>
+      <Value Profile="(Default)">Data Source=CZPRGS5.cz.tnt.com\PRODUCTION;Initial Catalog=BPA_RU;Persist Security Info=True;User ID=bpa_ru;Password=bpAut0mat10n_RU;</Value>
     </Setting>
   </Settings>
 </SettingsFile>
