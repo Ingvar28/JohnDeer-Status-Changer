@@ -125,20 +125,19 @@ namespace Status_changer
 
                         foreach (DataRow row in consData.Rows)
                         {
-                            //ДОПИСАТЬ ЗАБОР ПЕРЕМЕННЫХ ИЗ БАЗЫ1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            //Объявление переменных
                             var qty = "1";
 
                             //int id = Convert.ToInt32(row["id"].ToString());
 
                             var con = row["Nakladnaya TNT"].ToString();
 
+                            //DateTime dateFromBase = row.Field<DateTime>("sqldata");
+                            //var date = dateFromBase.ToString("ddMMMyy", CultureInfo.GetCultureInfo("en-us"));
                             var sqldata = row["Data"].ToString();
                             DateTime dDt = DateTime.Parse(sqldata);
                             string date = dDt.ToString("ddMMMyy", CultureInfo.GetCultureInfo("en-us"));
-
-
-                            //DateTime dateFromBase = row.Field<DateTime>("sqldata");
-                            //var date = dateFromBase.ToString("ddMMMyy", CultureInfo.GetCultureInfo("en-us"));
+                            
 
                             //var time = dateFromBase.ToString("HHmm");
                             var time = "1200";
@@ -148,61 +147,148 @@ namespace Status_changer
 
                             //var comment = row["Commentary"].ToString();
 
-                            var eventdepot = row["Tekuschee mestopolozhenie"].ToString();  //дописал
+                            var eventdepot = row["Tekuschee mestopolozhenie"].ToString();  //дописал                                                    
 
                             //if (comment.Trim() == "") comment = "...";
 
                             var delvz = "B";
 
-                            //Начало подключения к MF
-                            ForAwait(15, 2, "Consignment Status Entry");
-                            Thread.Sleep(500);
-
-                            if (status == "Груз выдан")
+                            if (
+                            #region All_depos    
+                                eventdepot == "Москва"
+                                || eventdepot == "Владимир"
+                                    || eventdepot == "Ковров"
+                                    || eventdepot == "Вязники"
+                                    || eventdepot == "Гороховец"
+                                    || eventdepot == "Дзержинск"
+                                || eventdepot == "Н.Новгород Моск."
+                                    || eventdepot == "Сухобезводно"
+                                || eventdepot == "Киров"
+                                    || eventdepot == "Глазов"
+                                    || eventdepot == "Балезино"
+                                    || eventdepot == "Верещагино"
+                                || eventdepot == "Пермь"
+                                    || eventdepot == "Ферма"
+                                    || eventdepot == "Кунгур"
+                                || eventdepot == "Екатеринбург"
+                                    || eventdepot == "Аксариха"
+                                || eventdepot == "Тюмень"
+                                    || eventdepot == "Заводоуковская"
+                                    || eventdepot == "Омутинская"
+                                    || eventdepot == "Ишим"
+                                    || eventdepot == "Называевская"
+                                || eventdepot == "Омск"
+                                || eventdepot == "Барабинск"
+                                || eventdepot == "Новосибирск"
+                                    || eventdepot == "Тайга"
+                                    || eventdepot == "Мариинск"
+                                    || eventdepot == "Боготол"
+                                    || eventdepot == "Ачинск"
+                                    || eventdepot == "Козулька"
+                                || eventdepot == "Красноярск"
+                                    || eventdepot == "Базаиха"
+                                    || eventdepot == "Уяр"
+                                    || eventdepot == "Заозерная"
+                                    || eventdepot == "Канск-Енисейский"
+                                    || eventdepot == "Иланская"
+                                    || eventdepot == "Решоты"
+                                    || eventdepot == "Тайшет"
+                                    || eventdepot == "Нижнеудинск"
+                                    || eventdepot == "Тулун"
+                                    || eventdepot == "Зима"
+                                    || eventdepot == "Черемхово"
+                                    || eventdepot == "Усолье-Сибирское"
+                                    || eventdepot == "Ангарск"
+                                || eventdepot == "Иркутск"
+                                    || eventdepot == "Слюдянка"
+                                    || eventdepot == "Мысовая"
+                                || eventdepot == "Улан-Удэ"
+                                    || eventdepot == "Петр.Завод Чет"// Уточнение станции!!!!
+                                    || eventdepot == "Хилок"
+                                    || eventdepot == "Могзон"
+                                    || eventdepot == "Кадала"
+                                || eventdepot == "Чита"
+                                    || eventdepot == "Карымская"
+                                    || eventdepot == "Шилка пасс."// Уточнение станции!!!!
+                                    || eventdepot == "Приисковая"
+                                    || eventdepot == "Куэнга"
+                                    || eventdepot == "Чернышевск Заб."// Уточнение станции!!!!
+                                    || eventdepot == "Зилово"
+                                    || eventdepot == "Ксеньевская"
+                                    || eventdepot == "Могоча"
+                                    || eventdepot == "Ерофей Павлович"
+                                    || eventdepot == "Уруша"
+                                    || eventdepot == "Сковородино"
+                                    || eventdepot == "Магдагачи"
+                                    || eventdepot == "Тыгда"
+                                    || eventdepot == "Шимановская"
+                                    || eventdepot == "Свободный"
+                                    || eventdepot == "Белогорск"
+                                    || eventdepot == "Завитая"
+                                    || eventdepot == "Бурея"
+                                    || eventdepot == "Облучье"
+                                    || eventdepot == "Биробиджан"
+                                || eventdepot == "Хабаровск"
+                                    || eventdepot == "Вяземская"
+                                    || eventdepot == "Бикин"
+                                    || eventdepot == "Лучегорск"
+                                    || eventdepot == "Дальнереченск"
+                                    || eventdepot == "Ружино"
+                                    || eventdepot == "Спасск-Дальний"
+                                    || eventdepot == "Мучная"
+                                    || eventdepot == "Уссурийск"
+                                || eventdepot == "Владивосток"
+                            #endregion
+                                )
                             {
-                                status = "OK"; 
-                                host.Send(status);//Вводим статус
-                                logger.Debug(status, this.Text); //LOG
-                            }
-                            else if (status == "Груз в пути")
-                            {
-                                status = "OF";
-                                host.Send(status);//Вводим статус
-                                logger.Debug(status, this.Text); //LOG
-                            }
-                            else
-                            {
-                                continue; //переход к следующей итерации
-                            }
-                            
-                            Thread.Sleep(500); //костыль
-                            if (disp.CursorCol != 28 && disp.CursorCol != 10) host.Send("<TAB>");
-                            ForAwaitCol(28);
+                                ForAwait(15, 2, "Consignment Status Entry");
+                                Thread.Sleep(500);
 
-                            host.Send(date);
-                            logger.Debug(date, this.Text);  //LOG
-                            host.Send("<TAB>");
-                            ForAwaitCol(46);
+                                if (status == "Груз выдан")
+                                {
+                                    status = "OK";
+                                    host.Send(status);//Вводим статус
+                                    logger.Debug(status, this.Text); //LOG
+                                }
+                                else if (status == "В пути")
+                                {
+                                    status = "OF";
+                                    host.Send(status);//Вводим статус
+                                    logger.Debug(status, this.Text); //LOG
+                                }
+                                else
+                                {
+                                    continue; //переход к следующей итерации
+                                }
 
-                            host.Send(time);
-                            if (disp.CursorCol != 70 && disp.CursorCol != 46) host.Send("<TAB>");
-                            ForAwaitCol(70);
+                                Thread.Sleep(500); //костыль
+                                if (disp.CursorCol != 28 && disp.CursorCol != 10) host.Send("<TAB>");
+                                ForAwaitCol(28);
 
-                            Thread.Sleep(500);
-                            if (eventdepot == "Москва")
+                                host.Send(date);
+                                logger.Debug(date, this.Text);  //LOG
+                                host.Send("<TAB>");
+                                ForAwaitCol(46);
+
+                                host.Send(time);
+                                if (disp.CursorCol != 70 && disp.CursorCol != 46) host.Send("<TAB>");
+                                ForAwaitCol(70);
+
+                                Thread.Sleep(500);
+                                if (eventdepot == "Москва")
                                 {
                                     eventdepot = "MS1";
                                     host.Send(eventdepot);
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if ( eventdepot== "Владимир"
-                            #region VL5_depot    
+                                else if (eventdepot == "Владимир"
+                                #region VL5_depot    
                                 || eventdepot == "Ковров-1"
-                                || eventdepot == "Вязники"
-                                || eventdepot == "Гороховец"
-                                || eventdepot == "Дзержинск"                                                                               
-                            #endregion
+                                    || eventdepot == "Вязники"
+                                    || eventdepot == "Гороховец"
+                                    || eventdepot == "Дзержинск"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "VL5";
@@ -210,8 +296,8 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Н.Новгород Моск."// Уточнение станции!!!!
-                            #region GOJ_depot
+                                else if (eventdepot == "Н.Новгород Моск."// Уточнение станции!!!!
+                                #region GOJ_depot
                                 || eventdepot == "Сухобезводно"
                                 #endregion
                                     )
@@ -221,12 +307,12 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Киров"
-                            #region KI4_depot    
+                                else if (eventdepot == "Киров"
+                                #region KI4_depot    
                                 || eventdepot == "Глазов"
-                                || eventdepot == "Балезино"
-                                || eventdepot == "Верещагино"
-                            #endregion
+                                    || eventdepot == "Балезино"
+                                    || eventdepot == "Верещагино"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "KI4";
@@ -234,11 +320,11 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Пермь"
-                            #region RT4_depot    
+                                else if (eventdepot == "Пермь"
+                                #region RT4_depot    
                                 || eventdepot == "Ферма"
-                                || eventdepot == "Кунгур"
-                            #endregion
+                                    || eventdepot == "Кунгур"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "RT4";
@@ -246,10 +332,10 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Екатеринбург-П"// Уточнение станции!!!!
-                            #region SVX_depot    
+                                else if (eventdepot == "Екатеринбург"// Уточнение станции!!!!
+                                #region SVX_depot    
                                 || eventdepot == "Аксариха"
-                            #endregion
+                                #endregion
                                     )
                                 {
                                     eventdepot = "SVX";
@@ -257,13 +343,13 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Тюмень"
-                            #region RT6_depot    
+                                else if (eventdepot == "Тюмень"
+                                #region RT6_depot    
                                 || eventdepot == "Заводоуковская"
-                                || eventdepot == "Омутинская"
-                                || eventdepot == "Ишим"
-                                || eventdepot == "Называевская"
-                            #endregion
+                                    || eventdepot == "Омутинская"
+                                    || eventdepot == "Ишим"
+                                    || eventdepot == "Называевская"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "RT6";
@@ -271,15 +357,15 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Омск-пасс")// Уточнение станции!!!!
-                            {
+                                else if (eventdepot == "Омск")// Уточнение станции!!!!
+                                {
                                     eventdepot = "OM4";
                                     host.Send(eventdepot);
 
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Барабинск")
+                                else if (eventdepot == "Барабинск")
                                 {
                                     eventdepot = "BB8";
                                     host.Send(eventdepot);
@@ -287,36 +373,36 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Новосибирск-гл."// Уточнение станции!!!!
-                            #region OVB_depot    
+                                else if (eventdepot == "Новосибирск"// Уточнение станции!!!!
+                                #region OVB_depot    
                                 || eventdepot == "Тайга"
-                                || eventdepot == "Мариинск"
-                                || eventdepot == "Боготол"
-                                || eventdepot == "Ачинск 1"
-                                || eventdepot == "Козулька"
-                            #endregion
+                                    || eventdepot == "Мариинск"
+                                    || eventdepot == "Боготол"
+                                    || eventdepot == "Ачинск"
+                                    || eventdepot == "Козулька"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "OVB";
                                     host.Send(eventdepot);
                                 }
 
-                            else if (eventdepot == "Красноярск-пасс."// Уточнение станции!!!!
-                            #region KJ4_depot    
+                                else if (eventdepot == "Красноярск"// Уточнение станции!!!!
+                                #region KJ4_depot    
                                 || eventdepot == "Базаиха"
-                                || eventdepot == "Уяр"
-                                || eventdepot == "Заозерная"
-                                || eventdepot == "Канск-Енисейский"
-                                || eventdepot == "Иланская"
-                                || eventdepot == "Решоты"
-                                || eventdepot == "Тайшет"
-                                || eventdepot == "Нижнеудинск"
-                                || eventdepot == "Тулун"
-                                || eventdepot == "Зима"
-                                || eventdepot == "Черемхово"
-                                || eventdepot == "Усолье-Сибирское"
-                                || eventdepot == "Ангарск"
-                            #endregion
+                                    || eventdepot == "Уяр"
+                                    || eventdepot == "Заозерная"
+                                    || eventdepot == "Канск-Енисейский"
+                                    || eventdepot == "Иланская"
+                                    || eventdepot == "Решоты"
+                                    || eventdepot == "Тайшет"
+                                    || eventdepot == "Нижнеудинск"
+                                    || eventdepot == "Тулун"
+                                    || eventdepot == "Зима"
+                                    || eventdepot == "Черемхово"
+                                    || eventdepot == "Усолье-Сибирское"
+                                    || eventdepot == "Ангарск"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "KJ4";
@@ -324,11 +410,11 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Иркутск-пасс."// Уточнение станции!!!!
-                            #region IK3_depot    
+                                else if (eventdepot == "Иркутск"// Уточнение станции!!!!
+                                #region IK3_depot    
                                 || eventdepot == "Слюдянка"
-                                || eventdepot == "Мысовая"
-                            #endregion
+                                    || eventdepot == "Мысовая"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "IK3";
@@ -336,13 +422,13 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Улан-Удэ"
-                            #region UU3_depot    
+                                else if (eventdepot == "Улан-Удэ"
+                                #region UU3_depot    
                                 || eventdepot == "Петр.Завод Чет"// Уточнение станции!!!!
-                                || eventdepot == "Хилок"
-                                || eventdepot == "Могзон"
-                                || eventdepot == "Кадала"
-                            #endregion
+                                    || eventdepot == "Хилок"
+                                    || eventdepot == "Могзон"
+                                    || eventdepot == "Кадала"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "UU3";
@@ -350,29 +436,29 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Чита 2"// Уточнение станции!!!!
-                            #region CT6_depot    
+                                else if (eventdepot == "Чита"// Уточнение станции!!!!
+                                #region CT6_depot    
                                 || eventdepot == "Карымская"
-                                || eventdepot == "Шилка пасс."// Уточнение станции!!!!
-                                || eventdepot == "Приисковая"
-                                || eventdepot == "Куэнга"
-                                || eventdepot == "Чернышевск Заб."// Уточнение станции!!!!
-                                || eventdepot == "Зилово"
-                                || eventdepot == "Ксеньевская"
-                                || eventdepot == "Могоча"
-                                || eventdepot == "Ерофей Павлович"
-                                || eventdepot == "Уруша"
-                                || eventdepot == "Сковородино"
-                                || eventdepot == "Магдагачи"
-                                || eventdepot == "Тыгда"
-                                || eventdepot == "Шимановская"
-                                || eventdepot == "Свободный"
-                                || eventdepot == "Белогорск"
-                                || eventdepot == "Завитая"
-                                || eventdepot == "Бурея"
-                                || eventdepot == "Облучье"
-                                || eventdepot == "Биробиджан"
-                            #endregion
+                                    || eventdepot == "Шилка пасс."// Уточнение станции!!!!
+                                    || eventdepot == "Приисковая"
+                                    || eventdepot == "Куэнга"
+                                    || eventdepot == "Чернышевск Заб."// Уточнение станции!!!!
+                                    || eventdepot == "Зилово"
+                                    || eventdepot == "Ксеньевская"
+                                    || eventdepot == "Могоча"
+                                    || eventdepot == "Ерофей Павлович"
+                                    || eventdepot == "Уруша"
+                                    || eventdepot == "Сковородино"
+                                    || eventdepot == "Магдагачи"
+                                    || eventdepot == "Тыгда"
+                                    || eventdepot == "Шимановская"
+                                    || eventdepot == "Свободный"
+                                    || eventdepot == "Белогорск"
+                                    || eventdepot == "Завитая"
+                                    || eventdepot == "Бурея"
+                                    || eventdepot == "Облучье"
+                                    || eventdepot == "Биробиджан"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "CT6";
@@ -380,17 +466,17 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Хабаровск 1"// Уточнение станции!!!!
-                            #region KH6_depot    
+                                else if (eventdepot == "Хабаровск"// Уточнение станции!!!!
+                                #region KH6_depot    
                                 || eventdepot == "Вяземская"
-                                || eventdepot == "Бикин"
-                                || eventdepot == "Лучегорск"
-                                || eventdepot == "Дальнереченск 1"
-                                || eventdepot == "Ружино"
-                                || eventdepot == "Спасск-Дальний"
-                                || eventdepot == "Мучная"
-                                || eventdepot == "Уссурийск"
-                            #endregion
+                                    || eventdepot == "Бикин"
+                                    || eventdepot == "Лучегорск"
+                                    || eventdepot == "Дальнереченск"
+                                    || eventdepot == "Ружино"
+                                    || eventdepot == "Спасск-Дальний"
+                                    || eventdepot == "Мучная"
+                                    || eventdepot == "Уссурийск"
+                                #endregion
                                     )
                                 {
                                     eventdepot = "KH6";
@@ -398,214 +484,220 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            else if (eventdepot == "Владивосток")
+                                else if (eventdepot == "Владивосток")
                                 {
                                     eventdepot = "VK3";
                                     host.Send(eventdepot);
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                            Thread.Sleep(500);                            
-                            host.Send("<TAB>");
-                            ForAwaitCol(13);
-                            host.Send("<TAB>");
-                            ForAwaitCol(57);
 
-                            //host.Send(date);
-                            host.Send("<TAB>");
-                            ForAwaitCol(77);
-
-                            ForAwaitCol(77);//Rems + Если статус "Груз в пути", то вводим коммент = статусу OF
-                            if (status == "Груз в пути")
-                            {
-                                host.Send("<F4>");
-                                ForAwait(5, 5, "Seq Remarks");
-                                status = "OF";
-                                host.Send(status);
                                 Thread.Sleep(500);
-                                host.Send("<ENTER>");
+                                host.Send("<TAB>");
+                                ForAwaitCol(13);
+                                host.Send("<TAB>");
+                                ForAwaitCol(57);
 
-                                ForAwaitCol(9); // вторая строка seq remarks
-                                host.Send("<F12>");
+                                //host.Send(date);
+                                host.Send("<TAB>");
+                                ForAwaitCol(77);
 
-                                ForAwaitCol(18);// mode: add - пропускаем
-                                host.Send("<F12>");//возвращаемся в общее меню на позицию REMS+ COL(77)
-                                ForAwait(15, 2, "Consignment Status Entry");// проверяем                    
-                            }
-                            host.Send("<TAB>");
-
-                            host.Send("<ENTER>");
-                            ForAwaitCol(9);
-                            host.Send("<F12>");
-                            ForAwaitCol(18);
-                            host.Send("<F12>");
-                            ForAwait(15, 2, "Consignment Status Entry");
-
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(12);//Runsheet - пропускаем
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(33);//Round no - пропускаем
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(54);// Delv zone -  по умолчанию "b"
-                            host.Send(delvz);
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(73);// Delv area - пропускаем
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(24);//No of status Entries = 1
-                            host.Send(qty);
-                            host.Send("<ENTER>");
-                            ForAwait(1, 10, "01");
-
-                            host.Send(con);  // Con number        
-                            logger.Debug(con, this.Text); //LOG
-                            ForAwaitCol(26);//Позиция после ввода 9 символов номера накладной    
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(37);// Статус (повторный вывод) - пропускаем
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(48);// Time - пропускаем
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(58);// Solved - пропускаем
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(64);// Rev date (повторный вывод) - пропускаем
-                            host.Send("<TAB>");
-
-                            ForAwaitCol(17); // Signatory Если статус "Груз выдан" = OK, если OF = ""
-                            if (status == "Груз выдан")
-                            {
-                                host.Send(status);
-                            }
-                            else
-                            {
-                                host.Send("");
-                            }
-
-                            host.Send("<ENTER>");//концовка и переход обратно к вводу статуса
-                            host.Send("<F12>");
-                            host.Send("<ENTER>");
-                            Thread.Sleep(2500);
-
-                            if (disp.ScreenData[15, 2, 9] == "Duplicate")
-                            {
-                                var checkDepo = "";
-                                short i = 1;
-                                do
+                                ForAwaitCol(77);//Rems + Если статус "В пути", то вводим коммент = статусу OF
+                                if (status == "В пути")
                                 {
-                                    short col = (Int16)(9 + i);
-                                    checkDepo = disp.ScreenData[54, col, 3];
-                                    if (checkDepo == "MW3"
-                                    #region depoes    
-                            || checkDepo == "MW5"
-                                        || checkDepo == "MW7"
-                                        || checkDepo == "MOW"
-                                        || checkDepo == "LED"
-                                        || checkDepo == "KG7"
-                                        || checkDepo == "GOJ"
-                                        || checkDepo == "KUF"
-                                        || checkDepo == "KZ7"
-                                        || checkDepo == "RO8"
-                                        || checkDepo == "KR4"
-                                        || checkDepo == "SVX"
-                                        || checkDepo == "IK3"
-                                        || checkDepo == "OVB"
-                                        || checkDepo == "KH6"
-                                        || checkDepo == "VK3"
-                                        || checkDepo == "AB7"
-                                        || checkDepo == "AC8"
-                                        || checkDepo == "AK7"
-                                        || checkDepo == "AP6"
-                                        || checkDepo == "AV8"
-                                        || checkDepo == "BA8"
-                                        || checkDepo == "BB8"
-                                        || checkDepo == "BG8"
-                                        || checkDepo == "BU8"
-                                        || checkDepo == "BY5"
-                                        || checkDepo == "CB2"
-                                        || checkDepo == "CT6"
-                                        || checkDepo == "EL6"
-                                        || checkDepo == "IV6"
-                                        || checkDepo == "IZ8"
-                                        || checkDepo == "JA5"
-                                        || checkDepo == "KE5"
-                                        || checkDepo == "KG5"
-                                        || checkDepo == "KI4"
-                                        || checkDepo == "KJ4"
-                                        || checkDepo == "KM7"
-                                        || checkDepo == "KN6"
-                                        || checkDepo == "KU3"
-                                        || checkDepo == "KU8"
-                                        || checkDepo == "LI5"
-                                        || checkDepo == "MK5"
-                                        || checkDepo == "MU5"
-                                        || checkDepo == "MV7"
-                                        || checkDepo == "NC8"
-                                        || checkDepo == "NH2"
-                                        || checkDepo == "NV6"
-                                        || checkDepo == "NZ8"
-                                        || checkDepo == "OM4"
-                                        || checkDepo == "OR7"
-                                        || checkDepo == "OR8"
-                                        || checkDepo == "PK7"
-                                        || checkDepo == "PK9"
-                                        || checkDepo == "PS9"
-                                        || checkDepo == "PV3"
-                                        || checkDepo == "PZ6"
-                                        || checkDepo == "RC6"
-                                        || checkDepo == "RT4"
-                                        || checkDepo == "RT6"
-                                        || checkDepo == "RY2"
-                                        || checkDepo == "SH5"
-                                        || checkDepo == "SH6"
-                                        || checkDepo == "SK9"
-                                        || checkDepo == "SM2"
-                                        || checkDepo == "SP5"
-                                        || checkDepo == "SQ4"
-                                        || checkDepo == "SR7"
-                                        || checkDepo == "SU8"
-                                        || checkDepo == "SY5"
-                                        || checkDepo == "TB3"
-                                        || checkDepo == "TO8"
-                                        || checkDepo == "TU3"
-                                        || checkDepo == "TV6"
-                                        || checkDepo == "UF5"
-                                        || checkDepo == "UK4"
-                                        || checkDepo == "UL9"
-                                        || checkDepo == "UU3"
-                                        || checkDepo == "UV4"
-                                        || checkDepo == "VL4"
-                                        || checkDepo == "VL5"
-                                        || checkDepo == "VN4"
-                                        || checkDepo == "VO4"
-                                        || checkDepo == "VO6"
-                                        || checkDepo == "VO8"
-                                        || checkDepo == "VY6"
-                                        || checkDepo == "VY8"
-                                        || checkDepo == "XS7"
-                                        || checkDepo == "ZP8"
-                                    #endregion
-                            )
-                                    {
-                                        host.Send(i.ToString());
-                                        host.Send("<ENTER>");
-                                        break;
-                                    }
-                                    i++;
-                                } while (checkDepo.Trim() != "");
-                                host.Send("1");
+                                    host.Send("<F4>");
+                                    ForAwait(5, 5, "Seq Remarks");
+                                    status = "OF";
+                                    host.Send(status);
+                                    Thread.Sleep(500);
+                                    host.Send("<ENTER>");
+
+                                    ForAwaitCol(9); // вторая строка seq remarks
+                                    host.Send("<F12>");
+
+                                    ForAwaitCol(18);// mode: add - пропускаем
+                                    host.Send("<F12>");//возвращаемся в общее меню на позицию REMS+ COL(77)
+                                    ForAwait(15, 2, "Consignment Status Entry");// проверяем                    
+                                }
+                                host.Send("<TAB>");
+
+                                host.Send("<ENTER>");
+                                ForAwaitCol(9);
+                                host.Send("<F12>");
+                                ForAwaitCol(18);
+                                host.Send("<F12>");
+                                ForAwait(15, 2, "Consignment Status Entry");
+
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(12);//Runsheet - пропускаем
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(33);//Round no - пропускаем
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(54);// Delv zone -  по умолчанию "b"
+                                host.Send(delvz);
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(73);// Delv area - пропускаем
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(24);//No of status Entries = 1
+                                host.Send(qty);
+                                host.Send("<ENTER>");
+                                ForAwait(1, 10, "01");
+
+                                host.Send(con);  // Con number        
+                                logger.Debug(con, this.Text); //LOG
+                                ForAwaitCol(26);//Позиция после ввода 9 символов номера накладной    
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(37);// Статус (повторный вывод) - пропускаем
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(48);// Time - пропускаем
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(58);// Solved - пропускаем
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(64);// Rev date (повторный вывод) - пропускаем
+                                host.Send("<TAB>");
+
+                                ForAwaitCol(17); // Signatory Если статус "Груз выдан" = OK, если OF = ""
+                                if (status == "Груз выдан")
+                                {
+                                    host.Send(status);
+                                }
+                                else
+                                {
+                                    host.Send("");
+                                }
+
+                                host.Send("<ENTER>");//концовка и переход обратно к вводу статуса
+                                host.Send("<F12>");
                                 host.Send("<ENTER>");
                                 Thread.Sleep(2500);
 
+                                if (disp.ScreenData[15, 2, 9] == "Duplicate")
+                                {
+                                    var checkDepo = "";
+                                    short i = 1;
+                                    do
+                                    {
+                                        short col = (Int16)(9 + i);
+                                        checkDepo = disp.ScreenData[54, col, 3];
+                                        if (checkDepo == "MW3"
+                                        #region depoes    
+                                            || checkDepo == "MW5"
+                                            || checkDepo == "MW7"
+                                            || checkDepo == "MOW"
+                                            || checkDepo == "LED"
+                                            || checkDepo == "KG7"
+                                            || checkDepo == "GOJ"
+                                            || checkDepo == "KUF"
+                                            || checkDepo == "KZ7"
+                                            || checkDepo == "RO8"
+                                            || checkDepo == "KR4"
+                                            || checkDepo == "SVX"
+                                            || checkDepo == "IK3"
+                                            || checkDepo == "OVB"
+                                            || checkDepo == "KH6"
+                                            || checkDepo == "VK3"
+                                            || checkDepo == "AB7"
+                                            || checkDepo == "AC8"
+                                            || checkDepo == "AK7"
+                                            || checkDepo == "AP6"
+                                            || checkDepo == "AV8"
+                                            || checkDepo == "BA8"
+                                            || checkDepo == "BB8"
+                                            || checkDepo == "BG8"
+                                            || checkDepo == "BU8"
+                                            || checkDepo == "BY5"
+                                            || checkDepo == "CB2"
+                                            || checkDepo == "CT6"
+                                            || checkDepo == "EL6"
+                                            || checkDepo == "IV6"
+                                            || checkDepo == "IZ8"
+                                            || checkDepo == "JA5"
+                                            || checkDepo == "KE5"
+                                            || checkDepo == "KG5"
+                                            || checkDepo == "KI4"
+                                            || checkDepo == "KJ4"
+                                            || checkDepo == "KM7"
+                                            || checkDepo == "KN6"
+                                            || checkDepo == "KU3"
+                                            || checkDepo == "KU8"
+                                            || checkDepo == "LI5"
+                                            || checkDepo == "MK5"
+                                            || checkDepo == "MU5"
+                                            || checkDepo == "MV7"
+                                            || checkDepo == "NC8"
+                                            || checkDepo == "NH2"
+                                            || checkDepo == "NV6"
+                                            || checkDepo == "NZ8"
+                                            || checkDepo == "OM4"
+                                            || checkDepo == "OR7"
+                                            || checkDepo == "OR8"
+                                            || checkDepo == "PK7"
+                                            || checkDepo == "PK9"
+                                            || checkDepo == "PS9"
+                                            || checkDepo == "PV3"
+                                            || checkDepo == "PZ6"
+                                            || checkDepo == "RC6"
+                                            || checkDepo == "RT4"
+                                            || checkDepo == "RT6"
+                                            || checkDepo == "RY2"
+                                            || checkDepo == "SH5"
+                                            || checkDepo == "SH6"
+                                            || checkDepo == "SK9"
+                                            || checkDepo == "SM2"
+                                            || checkDepo == "SP5"
+                                            || checkDepo == "SQ4"
+                                            || checkDepo == "SR7"
+                                            || checkDepo == "SU8"
+                                            || checkDepo == "SY5"
+                                            || checkDepo == "TB3"
+                                            || checkDepo == "TO8"
+                                            || checkDepo == "TU3"
+                                            || checkDepo == "TV6"
+                                            || checkDepo == "UF5"
+                                            || checkDepo == "UK4"
+                                            || checkDepo == "UL9"
+                                            || checkDepo == "UU3"
+                                            || checkDepo == "UV4"
+                                            || checkDepo == "VL4"
+                                            || checkDepo == "VL5"
+                                            || checkDepo == "VN4"
+                                            || checkDepo == "VO4"
+                                            || checkDepo == "VO6"
+                                            || checkDepo == "VO8"
+                                            || checkDepo == "VY6"
+                                            || checkDepo == "VY8"
+                                            || checkDepo == "XS7"
+                                            || checkDepo == "ZP8"
+                                        #endregion
+                                        )
+                                        {
+                                            host.Send(i.ToString());
+                                            host.Send("<ENTER>");
+                                            break;
+                                        }
+                                        i++;
+                                    } while (checkDepo.Trim() != "");
+                                    host.Send("1");
+                                    host.Send("<ENTER>");
+                                    Thread.Sleep(2500);
+
+                                }
+                                ForAwait(15, 2, "Consignment Status Entry");
+                                //DBContext.ChangeRecordStatus(id);
                             }
-                            ForAwait(15, 2, "Consignment Status Entry");
-                            //DBContext.ChangeRecordStatus(id);
+                            else
+                            {
+                                continue; //переход к следующей итерации
+                            }
                         }
 
 
