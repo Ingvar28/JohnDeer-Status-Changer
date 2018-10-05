@@ -132,15 +132,23 @@ namespace Status_changer
 
                             var con = row["Nakladnaya TNT"].ToString();
 
-                            DateTime dateFromBase = row.Field<DateTime>("Date");
-                            var date = dateFromBase.ToString("ddMMMyy", CultureInfo.GetCultureInfo("en-us"));
-                            var time = dateFromBase.ToString("HHmm");
+                            var sqldata = row["Data"].ToString();
+                            DateTime dDt = DateTime.Parse(sqldata);
+                            string date = dDt.ToString("ddMMMyy", CultureInfo.GetCultureInfo("en-us"));
+
+
+                            //DateTime dateFromBase = row.Field<DateTime>("sqldata");
+                            //var date = dateFromBase.ToString("ddMMMyy", CultureInfo.GetCultureInfo("en-us"));
+
+                            //var time = dateFromBase.ToString("HHmm");
+                            var time = "1200";
+
 
                             var status = row["Status"].ToString();
 
                             //var comment = row["Commentary"].ToString();
 
-                            var eventdepot = row["EventDepot"].ToString();  //дописал
+                            var eventdepot = row["Tekuschee mestopolozhenie"].ToString();  //дописал
 
                             //if (comment.Trim() == "") comment = "...";
 
