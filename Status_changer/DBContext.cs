@@ -44,6 +44,28 @@ namespace Status_changer
             return result;
         }
 
+        static public void ChangeRecordStatus()
+        {
+            
+            try
+            {
+                using (SqlConnection con = new SqlConnection(Properties.Settings.Default.BPA_RUConnectionString))
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = con;
+                        cmd.CommandText = "Update JohnDeere Set Status = 'Груз выдан (внесено)' Where Status = 'Груз выдан'";                       
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {                
+            }
+            
+        }
         //static public void ChangeRecordStatus(int id)
         //{
         //    try

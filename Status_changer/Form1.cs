@@ -254,7 +254,7 @@ namespace Status_changer
                                     host.Send(status);//Вводим статус
                                     logger.Debug(status, this.Text); //LOG
                                 }
-                                else if (status == "В пути")
+                                else if (status == "В пути" || status == "Находится на складе")
                                 {
                                     status = "OF";
                                     host.Send(status);//Вводим статус
@@ -511,7 +511,7 @@ namespace Status_changer
                                 ForAwaitCol(77);
 
                                 ForAwaitCol(77);//Rems + Если статус "В пути", то вводим коммент = статусу OF
-                                if (status == "В пути")
+                                if (status == "В пути" || status == "Находится на складе")
                                 {
                                     host.Send("<F4>");
                                     ForAwait(5, 5, "Seq Remarks");
@@ -701,7 +701,7 @@ namespace Status_changer
 
                                 }
                                 ForAwait(15, 2, "Consignment Status Entry");
-                                //DBContext.ChangeRecordStatus(id);
+                                DBContext.ChangeRecordStatus(); //Переписывает все статусы "Груз выдан"
                             }
                             else
                             {
