@@ -125,6 +125,9 @@ namespace Status_changer
 
                         foreach (DataRow row in consData.Rows)
                         {
+                            //Получаем PINKod в текущей строке
+                            int PINKod = Convert.ToInt32(row["PINKod"].ToString());                            
+
                             //Объявление переменных
                             var qty = "1";
 
@@ -699,7 +702,8 @@ namespace Status_changer
 
                                 }
                                 ForAwait(15, 2, "Consignment Status Entry");
-                                
+                                DBContext.ChangeRecordStatus(PINKod);
+
                             }
                             else
                             {
@@ -707,7 +711,7 @@ namespace Status_changer
                             }
                         }
 
-                        DBContext.ChangeRecordStatus(); //Переписывает все статусы "Груз выдан"
+                        //DBContext.ChangeRecordStatus(); //Переписывает все статусы "Груз выдан"
 
                         teemApp.Close();
                         foreach (Process proc in Process.GetProcessesByName("teem2k"))

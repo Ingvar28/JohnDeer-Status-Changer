@@ -44,7 +44,7 @@ namespace Status_changer
             return result;
         }
 
-        static public void ChangeRecordStatus()
+        static public void ChangeRecordStatus(int PINKod)
         {
             
             try
@@ -56,7 +56,14 @@ namespace Status_changer
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.Connection = con;
-                        cmd.CommandText = "Update JohnDeere Set Status = 'Груз выдан (внесено)' Where Status = 'Груз выдан'";                       
+                        //cmd.CommandText = "Update JohnDeere Set Status = 'Груз выдан (внесено)' Where Status = 'Груз выдан'";
+                        cmd.CommandText = "Update JohnDeere Set Status = 'Груз выдан (внесено)' Where PINKod = @PINKod";
+                        cmd.Parameters.Clear();
+
+                        cmd.Parameters.Add("@PINKod", SqlDbType.Int);
+
+                        cmd.Parameters["@PINKod"].Value = PINKod;
+
                         cmd.ExecuteNonQuery();
                     }
                 }
