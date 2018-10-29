@@ -534,16 +534,7 @@ namespace Status_changer
                                     host.Send("<F12>");//возвращаемся в общее меню на позицию REMS+ COL(77)
                                     ForAwait(15, 2, "Consignment Status Entry");// проверяем                    
                                 }
-                                host.Send("<TAB>");
-
-                                host.Send("<ENTER>");
-                                ForAwaitCol(9);
-                                host.Send("<F12>");
-                                ForAwaitCol(18);
-                                host.Send("<F12>");
-                                ForAwait(15, 2, "Consignment Status Entry");
-
-                                host.Send("<TAB>");
+                                host.Send("<TAB>");                               
 
                                 ForAwaitCol(12);//Runsheet - пропускаем
                                 host.Send("<TAB>");
