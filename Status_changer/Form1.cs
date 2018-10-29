@@ -518,7 +518,7 @@ namespace Status_changer
                                 ForAwaitCol(77);
 
                                 ForAwaitCol(77);//Rems + Если статус "В пути", то вводим коммент = статусу OF
-                                if (status == "В пути" || status == "Находится на складе")
+                                if (status == "В пути" || status == "Находится на складе" || status == "OF")// Подстраховка
                                 {
                                     host.Send("<F4>");
                                     ForAwait(5, 5, "Seq Remarks");
@@ -572,7 +572,7 @@ namespace Status_changer
                                 host.Send("<TAB>");
 
                                 ForAwaitCol(17); // Signatory Если статус "Груз выдан" = OK, если OF = ""
-                                if (status == "Груз выдан")
+                                if (status == "Груз выдан" || status == "OK")// Подстраховка, если статус будет не "Груз выдан", а ОК. Убрать после тестов
                                 {
                                     status = "OK";
                                     host.Send(status);
@@ -699,7 +699,7 @@ namespace Status_changer
 
                                 }
                                 ForAwait(15, 2, "Consignment Status Entry");
-                                DBContext.ChangeRecordStatus(); //Переписывает все статусы "Груз выдан"
+                                
                             }
                             else
                             {
@@ -707,7 +707,7 @@ namespace Status_changer
                             }
                         }
 
-
+                        DBContext.ChangeRecordStatus(); //Переписывает все статусы "Груз выдан"
 
                         teemApp.Close();
                         foreach (Process proc in Process.GetProcessesByName("teem2k"))
