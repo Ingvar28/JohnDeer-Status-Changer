@@ -499,6 +499,13 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
+                                else if (status == "Находится на складе")
+                                {
+                                    eventdepot = "MOW";
+                                    host.Send(eventdepot);
+                                    logger.Debug(eventdepot, this.Text); //LOG
+                                }
+
 
                                 Thread.Sleep(500);
                                 host.Send("<TAB>");
