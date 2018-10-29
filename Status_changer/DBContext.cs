@@ -23,8 +23,8 @@ namespace Status_changer
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.Connection = con;
-                        //cmd.CommandText = "Select 'Nakladnaya TNT', Status, Data, 'Tekuschee mestopolozhenie' from JohnDeere WHERE Status IS NOT NULL;";
-                        cmd.CommandText = "Select * FROM JohnDeere WHERE Status IS NOT NULL";
+                        cmd.CommandText = "Select ROW_NUMBER() OVER(ORDER BY data ASC) AS Row#, 'Nakladnaya TNT', Status, Data, 'Tekuschee mestopolozhenie' from JohnDeere WHERE Status IS NOT NULL;";
+                        //cmd.CommandText = "Select * FROM JohnDeere WHERE Status IS NOT NULL";
 
 
                         using (SqlDataReader reader = cmd.ExecuteReader())

@@ -157,11 +157,11 @@ namespace Status_changer
                             #region All_depos    
                                 eventdepot == "Москва"
                                 || eventdepot == "Владимир"
-                                    || eventdepot == "Ковров"
+                                    || eventdepot == "Ковров 1"//Исправлено
                                     || eventdepot == "Вязники"
                                     || eventdepot == "Гороховец"
                                     || eventdepot == "Дзержинск"
-                                || eventdepot == "Н.Новгород Моск."
+                                || eventdepot == "Нижний Новгород"//Исправлено
                                     || eventdepot == "Сухобезводно"
                                 || eventdepot == "Киров"
                                     || eventdepot == "Глазов"
@@ -206,16 +206,16 @@ namespace Status_changer
                                     || eventdepot == "Слюдянка"
                                     || eventdepot == "Мысовая"
                                 || eventdepot == "Улан-Удэ"
-                                    || eventdepot == "Петр.Завод Чет"// Уточнение станции!!!!
+                                    || eventdepot == "Петровский завод"//Исправлено
                                     || eventdepot == "Хилок"
                                     || eventdepot == "Могзон"
                                     || eventdepot == "Кадала"
                                 || eventdepot == "Чита"
                                     || eventdepot == "Карымская"
-                                    || eventdepot == "Шилка пасс."// Уточнение станции!!!!
+                                    || eventdepot == "Шилка"//Исправлено
                                     || eventdepot == "Приисковая"
                                     || eventdepot == "Куэнга"
-                                    || eventdepot == "Чернышевск Заб."// Уточнение станции!!!!
+                                    || eventdepot == "Чернышевск Заб."
                                     || eventdepot == "Зилово"
                                     || eventdepot == "Ксеньевская"
                                     || eventdepot == "Могоча"
@@ -288,7 +288,7 @@ namespace Status_changer
 
                                 else if (eventdepot == "Владимир"
                                 #region VL5_depot    
-                                || eventdepot == "Ковров-1"
+                                || eventdepot == "Ковров 1"//Исправлено
                                     || eventdepot == "Вязники"
                                     || eventdepot == "Гороховец"
                                     || eventdepot == "Дзержинск"
@@ -300,7 +300,7 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                                else if (eventdepot == "Н.Новгород Моск."// Уточнение станции!!!!
+                                else if (eventdepot == "Нижний Новгород"//Исправлено
                                 #region GOJ_depot
                                 || eventdepot == "Сухобезводно"
                                 #endregion
@@ -336,7 +336,7 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                                else if (eventdepot == "Екатеринбург"// Уточнение станции!!!!
+                                else if (eventdepot == "Екатеринбург"
                                 #region SVX_depot    
                                 || eventdepot == "Аксариха"
                                 #endregion
@@ -361,7 +361,7 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                                else if (eventdepot == "Омск")// Уточнение станции!!!!
+                                else if (eventdepot == "Омск")
                                 {
                                     eventdepot = "OM4";
                                     host.Send(eventdepot);
@@ -377,7 +377,7 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                                else if (eventdepot == "Новосибирск"// Уточнение станции!!!!
+                                else if (eventdepot == "Новосибирск"
                                 #region OVB_depot    
                                 || eventdepot == "Тайга"
                                     || eventdepot == "Мариинск"
@@ -393,7 +393,7 @@ namespace Status_changer
                                     host.Send(eventdepot);
                                 }
 
-                                else if (eventdepot == "Красноярск"// Уточнение станции!!!!
+                                else if (eventdepot == "Красноярск"
                                 #region KJ4_depot    
                                 || eventdepot == "Базаиха"
                                     || eventdepot == "Уяр"
@@ -417,7 +417,7 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                                else if (eventdepot == "Иркутск"// Уточнение станции!!!!
+                                else if (eventdepot == "Иркутск"
                                 #region IK3_depot    
                                 || eventdepot == "Слюдянка"
                                     || eventdepot == "Мысовая"
@@ -431,7 +431,7 @@ namespace Status_changer
 
                                 else if (eventdepot == "Улан-Удэ"
                                 #region UU3_depot    
-                                || eventdepot == "Петр.Завод Чет"// Уточнение станции!!!!
+                                || eventdepot == "Петровский завод"//Исправлено
                                     || eventdepot == "Хилок"
                                     || eventdepot == "Могзон"
                                     || eventdepot == "Кадала"
@@ -443,13 +443,13 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                                else if (eventdepot == "Чита"// Уточнение станции!!!!
+                                else if (eventdepot == "Чита"
                                 #region CT6_depot    
                                 || eventdepot == "Карымская"
-                                    || eventdepot == "Шилка пасс."// Уточнение станции!!!!
+                                    || eventdepot == "Шилка"//Исправлено
                                     || eventdepot == "Приисковая"
                                     || eventdepot == "Куэнга"
-                                    || eventdepot == "Чернышевск Заб."// Уточнение станции!!!!
+                                    || eventdepot == "Чернышевск Заб."
                                     || eventdepot == "Зилово"
                                     || eventdepot == "Ксеньевская"
                                     || eventdepot == "Могоча"
@@ -474,7 +474,7 @@ namespace Status_changer
                                     logger.Debug(eventdepot, this.Text); //LOG
                                 }
 
-                                else if (eventdepot == "Хабаровск"// Уточнение станции!!!!
+                                else if (eventdepot == "Хабаровск"
                                 #region KH6_depot    
                                 || eventdepot == "Вяземская"
                                     || eventdepot == "Бикин"
@@ -576,6 +576,7 @@ namespace Status_changer
                                 ForAwaitCol(17); // Signatory Если статус "Груз выдан" = OK, если OF = ""
                                 if (status == "Груз выдан")
                                 {
+                                    status = "OK";
                                     host.Send(status);
                                 }
                                 else
