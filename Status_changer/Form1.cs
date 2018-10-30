@@ -711,7 +711,7 @@ namespace Status_changer
                             }
                         }
 
-                        //DBContext.ChangeRecordStatus(); //Переписывает все статусы "Груз выдан"
+                        
 
                         teemApp.Close();
                         foreach (Process proc in Process.GetProcessesByName("teem2k"))
